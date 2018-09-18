@@ -154,7 +154,7 @@
                       <Component id="tresholdSlider" min="-2" max="-2" attributes="0"/>
                       <Component id="tresholdLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="161" max="32767" attributes="0"/>
+                  <EmptySpace pref="147" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -186,6 +186,8 @@
         </Component>
         <Component class="javax.swing.JSlider" name="tresholdSlider">
           <Properties>
+            <Property name="majorTickSpacing" type="int" value="5"/>
+            <Property name="minorTickSpacing" type="int" value="1"/>
             <Property name="paintLabels" type="boolean" value="true"/>
             <Property name="paintTicks" type="boolean" value="true"/>
             <Property name="snapToTicks" type="boolean" value="true"/>

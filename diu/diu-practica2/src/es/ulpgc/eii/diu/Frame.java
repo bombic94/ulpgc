@@ -81,6 +81,8 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        tresholdSlider.setMajorTickSpacing(5);
+        tresholdSlider.setMinorTickSpacing(1);
         tresholdSlider.setPaintLabels(true);
         tresholdSlider.setPaintTicks(true);
         tresholdSlider.setSnapToTicks(true);
@@ -127,7 +129,7 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tresholdSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tresholdLabel))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
