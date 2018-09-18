@@ -13,12 +13,12 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Frame extends javax.swing.JFrame {
 
-    private int minValue;
-    private int maxValue;
-    private int dimension;
-    private int treshold;
+    private int minValue; //minimum integer value in matrix
+    private int maxValue; //maximum integer value in matrix
+    private int dimension; //dimension of matrix
+    private int treshold; //limit, under which elements in matrix should be hidden
     
-    private int[][] matrix;
+    private int[][] matrix; //2D array for storing matrix
     
     /**
      * Creates new form Frame
@@ -229,50 +229,94 @@ public class Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Slider changed, hide all elements which value is under treshold
+     * @param evt ChangeEvent
+     */
     private void tresholdSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tresholdSliderStateChanged
         printMatrix();
     }//GEN-LAST:event_tresholdSliderStateChanged
 
+    /**
+     * Dimension input changed, update slider and matrix
+     * @param evt KeyEvent
+     */
     private void dimensionTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dimensionTextFieldKeyReleased
         update();
     }//GEN-LAST:event_dimensionTextFieldKeyReleased
 
+    /**
+     * Min value input changed, update slider and matrix
+     * @param evt KeyEvent
+     */
     private void minValTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_minValTextFieldKeyReleased
         update();
     }//GEN-LAST:event_minValTextFieldKeyReleased
 
+    /**
+     * Max value input changed, update slider and matrix
+     * @param evt KeyEvent
+     */
     private void maxValTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_maxValTextFieldKeyReleased
         update();
     }//GEN-LAST:event_maxValTextFieldKeyReleased
 
+    /**
+     * This method calls three another methods:
+     * First it updates slider values
+     * 
+     */
     private void update() {
         setTresholdValues();
         computeMatrix(); 
         printMatrix();
     }
 
+    /**
+     * Parse min and max value, check if they are positive integers,
+     * check if min is less than or equal to max and if conditions are met,
+     * set new slider values.
+     */
     private void setTresholdValues() {
         minValue = tryParse(minValTextField.getText());
         maxValue = tryParse(maxValTextField.getText());
-        checkMinMax();
-        tresholdSlider.setMinimum(minValue);
-        tresholdSlider.setMaximum(maxValue);
+        if (minValue >= 0 && maxValue >= 0 && isMinLessThanOrEqualMax()){
+            tresholdSlider.setMinimum(minValue);
+            tresholdSlider.setMaximum(maxValue);
+        }
     }
     
+    /**
+     * Parse min and max values, dimension value, check if all are positive integers
+     * and min is less than or equal to max.
+     * If dimension is greater than 10, set it to 10 (mostly for memory issues).
+     * Create new matrix and fill it with generated numbers within range of min and max.
+     */
     private void computeMatrix() {
         dimension = tryParse(dimensionTextField.getText()); 
         minValue = tryParse(minValTextField.getText());
-        maxValue = tryParse(maxValTextField.getText()); 
-        checkMinMax();
-        matrix = new int[dimension][dimension];
+        maxValue = tryParse(maxValTextField.getText());
+        if (dimension >= 0 && minValue >= 0 && maxValue >= 0 && isMinLessThanOrEqualMax()){
+            if (dimension > 10) {
+                dimension = 10;
+                dimensionTextField.setText(Integer.toString(dimension));
+            }       
+            
+            matrix = new int[dimension][dimension];
         
-        for(int i = 0; i < dimension; i++) {
-            for(int j = 0; j < dimension; j++) { 
-                matrix[i][j] = ThreadLocalRandom.current().nextInt(minValue, maxValue + 1);
+            for(int i = 0; i < dimension; i++) {
+                for(int j = 0; j < dimension; j++) { 
+                    matrix[i][j] = ThreadLocalRandom.current().nextInt(minValue, maxValue + 1);
+                }
             }
         }
     }
     
+    /**
+     * Get limit from treshold. Go through matrix and generate String to print.
+     * If value of element is less than or equal to treshold, print '-', else print number.
+     * All elements are separated by tab
+     */
     private void printMatrix() {
         treshold = tresholdSlider.getValue();  
         
@@ -298,17 +342,22 @@ public class Frame extends javax.swing.JFrame {
     private Integer tryParse(String text) {
         try {
             return Integer.parseInt(text);         
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             errorLabel.setText("Input must be integer value!");
-            return null;
+            return -1;
         }
     }
     
-    private void checkMinMax() {
+    /**
+     * Check if minimum value is less than or equal maximum value
+     */
+    private boolean isMinLessThanOrEqualMax() {
         if (minValue > maxValue) {
             errorLabel.setText("Minimum must not be greater than maximum value");
+            return false;
         } else {
             errorLabel.setText("");
+            return true;
         }
     }
     
