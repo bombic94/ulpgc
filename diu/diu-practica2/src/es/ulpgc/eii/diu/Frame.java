@@ -5,6 +5,7 @@
  */
 package es.ulpgc.eii.diu;
 
+import com.sun.glass.events.KeyEvent;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -242,7 +243,9 @@ public class Frame extends javax.swing.JFrame {
      * @param evt KeyEvent
      */
     private void dimensionTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dimensionTextFieldKeyReleased
-        update();
+        if (Character.isLetterOrDigit(evt.getKeyChar()) || evt.getKeyCode() == KeyEvent.VK_BACKSPACE || evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            update();
+        }
     }//GEN-LAST:event_dimensionTextFieldKeyReleased
 
     /**
@@ -250,7 +253,9 @@ public class Frame extends javax.swing.JFrame {
      * @param evt KeyEvent
      */
     private void minValTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_minValTextFieldKeyReleased
-        update();
+        if (Character.isLetterOrDigit(evt.getKeyChar()) || evt.getKeyCode() == KeyEvent.VK_BACKSPACE || evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            update();
+        }
     }//GEN-LAST:event_minValTextFieldKeyReleased
 
     /**
@@ -258,7 +263,9 @@ public class Frame extends javax.swing.JFrame {
      * @param evt KeyEvent
      */
     private void maxValTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_maxValTextFieldKeyReleased
-        update();
+        if (Character.isLetterOrDigit(evt.getKeyChar()) || evt.getKeyCode() == KeyEvent.VK_BACKSPACE || evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            update();
+        }
     }//GEN-LAST:event_maxValTextFieldKeyReleased
 
     /**
@@ -283,6 +290,7 @@ public class Frame extends javax.swing.JFrame {
         if (minValue >= 0 && maxValue >= 0 && isMinLessThanOrEqualMax()){
             tresholdSlider.setMinimum(minValue);
             tresholdSlider.setMaximum(maxValue);
+            tresholdSlider.setValue(minValue);
         }
     }
     
