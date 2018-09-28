@@ -5,9 +5,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
+import javafx.scene.shape.*;
 
 import java.util.LinkedList;
 
@@ -28,15 +26,15 @@ public class Controller {
     private String shape;
 
     public void initialize() {
-        shapeBox.setItems(FXCollections.observableArrayList("Circle", "Square"));
-        shapeSizeBox.setItems(FXCollections.observableArrayList(5,10,20,50,100,300));
-        shapeNumBox.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10,15,20,50));
-        delayBox.setItems(FXCollections.observableArrayList(0,25,50,100,200,500,1000));
+        shapeBox.setItems(FXCollections.observableArrayList("Circle", "Square", "Line"));
+        shapeSizeBox.setItems(FXCollections.observableArrayList(5, 10, 20, 50, 100, 300));
+        shapeNumBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 50));
+        delayBox.setItems(FXCollections.observableArrayList(0, 25, 50, 100, 200, 500, 1000));
         shapeBox.setValue("Circle");
         shapeSizeBox.setValue(20);
         shapeNumBox.setValue(5);
         delayBox.setValue(50);
-        
+
         brushPicker.setValue(Color.BLACK);
         canvas.setStyle("-fx-background-color: " + toRGBCode(backgroundPicker.getValue()));
         brushColor = brushPicker.getValue();
@@ -59,22 +57,46 @@ public class Controller {
         if (System.currentTimeMillis() - startTime >= waitMilis) {
             Shape s = null;
             startTime = System.currentTimeMillis();
-            while(list.size() >= shapesNum) {
+            while (list.size() >= shapesNum) {
                 canvas.getChildren().remove(list.removeLast());
             }
             switch (shape) {
                 case "Circle":
-                    s = new Circle(mouseDragEvent.getX(), mouseDragEvent.getY(), shapeSize, Color.valueOf(String.valueOf((brushPicker.getValue()))));
+                    s = new Circle(mouseDragEvent.getX(), mouseDragEvent.getY(), shapeSize, brushColor);
                     break;
                 case "Square":
-                    s = new Rectangle(mouseDragEvent.getX()-shapeSize/2, mouseDragEvent.getY()-shapeSize/2, shapeSize, shapeSize);
-                    s.setFill(Color.valueOf(String.valueOf((brushPicker.getValue()))));
+                    s = new Rectangle(mouseDragEvent.getX() - shapeSize / 2, mouseDragEvent.getY() - shapeSize / 2, shapeSize, shapeSize);
+                    s.setFill(brushColor);
+                    break;
+                case "Line":
+                    if (list.size() == 0) {
+                        s = new Line(mouseDragEvent.getX() - shapeSize / 2, mouseDragEvent.getY(), mouseDragEvent.getX() + shapeSize / 2, mouseDragEvent.getY());
+                    } else {
+                        double[] v = getNormallizedVector(mouseDragEvent, ((Line)list.getFirst()));
+                        s = new Line(mouseDragEvent.getX() - shapeSize / 2, mouseDragEvent.getY(),
+                                mouseDragEvent.getX() +shapeSize / 2, mouseDragEvent.getY());
+                        s.setRotate(Math.atan2(v[1], v[0])*180/Math.PI);
+                    }
+                    s.setFill(brushColor);
+                    s.setStrokeWidth(shapeSize);
+                    s.setStroke(brushColor);
+                    s.setStrokeLineCap(StrokeLineCap.ROUND);
                     break;
             }
             list.push(s);
             canvas.getChildren().add(s);
         }
 
+    }
+
+    private double[] getNormallizedVector(MouseEvent mouseDragEvent, Line first) {
+        double dx = first.getStartX()-mouseDragEvent.getX();
+        double dy = first.getStartY()-mouseDragEvent.getY();
+        double dlength = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));
+        double[] res = new double[2];
+        res[0] = dx/dlength;
+        res[1] = dy/dlength;
+        return res;
     }
 
     private static String toRGBCode(Color color) {
@@ -85,9 +107,10 @@ public class Controller {
     }
 
     public void endDrawing(MouseEvent mouseEvent) {
-        for (Shape obj:list){
+        for (Shape obj : list) {
             canvas.getChildren().remove(obj);
         }
+        list.clear();
     }
 
     public void chooseObject(ActionEvent actionEvent) {
