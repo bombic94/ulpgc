@@ -22,7 +22,8 @@ public class DrawingPanel extends JPanel {
 
     public Queue<Point> positions = new LinkedList<>(); //queue of points
     private Color foregroundColor; //color, in which the dots will be drawn
-
+    private final int SIZE_OF_TRACE = 10; //size of circle in px
+    private final int QUEUE_LENGTH = 5; //length of queue, how many points to show
     /**
      * Method used to draw into the label
      * @param g Graphics object
@@ -36,11 +37,11 @@ public class DrawingPanel extends JPanel {
 
         //draw each point in queue as a filled circle
         positions.forEach((p) -> {
-            g.fillOval(p.x, p.y, 10, 10);
+            g.fillOval(p.x, p.y, SIZE_OF_TRACE, SIZE_OF_TRACE);
         });
 
         // if queue is full (5 elements, remove the last one)
-        if (positions.size() >= 5) {
+        if (positions.size() >= QUEUE_LENGTH) {
             positions.remove();
         }
     }

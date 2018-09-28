@@ -6,8 +6,6 @@
 
 package es.ulpgc.eii.diu;
 
-import java.awt.Color;
-
 /**
  *
  * @author David
@@ -15,8 +13,9 @@ import java.awt.Color;
 public class Frame extends javax.swing.JFrame {
 
     //counter of moves, simulates delay of mouse
-    public int counter = 0;
-
+    private int counter = 0;
+    private final int DELAY = 5;
+    
     /** Creates new form Frame */
     public Frame() {
         initComponents();
@@ -139,7 +138,7 @@ public class Frame extends javax.swing.JFrame {
      */
     private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
         counter++;
-        if (counter == 5) {
+        if (counter == DELAY) {
             counter = 0;
             drawingPanel.addToQueue(evt.getX(), evt.getY());
             drawingPanel.repaint();
