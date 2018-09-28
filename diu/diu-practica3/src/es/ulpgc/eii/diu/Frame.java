@@ -14,9 +14,9 @@ import java.awt.Color;
  */
 public class Frame extends javax.swing.JFrame {
 
-    //counter of moves, simulates delay of mouse
-    private int counter = 0;
-    private final int DELAY = 5;
+    //Delay of mouse in ms
+    private long startTime = System.currentTimeMillis();
+    private long delay = 40;
     
     /** Creates new form Frame */
     public Frame() {
@@ -209,12 +209,11 @@ public class Frame extends javax.swing.JFrame {
      * @param y Y-coordinate of mouse
      */
     private void moveMouse(int x, int y) {
-        counter++;
-        if (counter == DELAY) {
-            counter = 0;
+        if (System.currentTimeMillis() - startTime >= delay) {
+            startTime = System.currentTimeMillis();
             drawingPanel.addToQueue(x, y);
             drawingPanel.repaint();
-        }
+        }        
     }
 
     /**
