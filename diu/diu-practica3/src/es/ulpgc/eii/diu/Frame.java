@@ -7,17 +7,14 @@
 package es.ulpgc.eii.diu;
 
 import java.awt.Color;
+import static java.lang.System.currentTimeMillis;
 
-/**
- *
- * @author David
- */
 public class Frame extends javax.swing.JFrame {
 
     //Delay of mouse in ms
-    private long startTime = System.currentTimeMillis();
-    private long delay = 40;
-    
+    private long startTime = currentTimeMillis(); //init starttime
+    private final long DELAY = 40; //time between painting
+
     /** Creates new form Frame */
     public Frame() {
         initComponents();
@@ -202,18 +199,18 @@ public class Frame extends javax.swing.JFrame {
     /** 
      * On mouse move show the dots.
      * Since the move event is called very often, to simulate delay,
-     * the action is called only on every fifth event.
+     * the action is called only after more than 40 ms from previous event.
      * It adds the actual position of mouse to queue of positions 
      * and calls the repaint method.
      * @param x X-coordinate of mouse
      * @param y Y-coordinate of mouse
      */
     private void moveMouse(int x, int y) {
-        if (System.currentTimeMillis() - startTime >= delay) {
-            startTime = System.currentTimeMillis();
+        if (currentTimeMillis() - startTime >= DELAY) {
+            startTime = currentTimeMillis();
             drawingPanel.addToQueue(x, y);
             drawingPanel.repaint();
-        }        
+        }
     }
 
     /**

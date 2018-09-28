@@ -34,7 +34,7 @@ public class DrawingPanel extends JPanel {
 
         //draw each point in queue as a filled circle
         positions.forEach((p) -> {
-            g.fillOval(p.x-SIZE_OF_TRACE/2, p.y-SIZE_OF_TRACE/2, SIZE_OF_TRACE, SIZE_OF_TRACE);
+            g.fillOval(p.x - (SIZE_OF_TRACE / 2), p.y - (SIZE_OF_TRACE / 2), SIZE_OF_TRACE, SIZE_OF_TRACE);
         });
 
         // if queue is full (5 elements, remove the last one)
