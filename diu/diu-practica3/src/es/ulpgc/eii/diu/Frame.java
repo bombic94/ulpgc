@@ -6,6 +6,8 @@
 
 package es.ulpgc.eii.diu;
 
+import java.awt.Color;
+
 /**
  *
  * @author David
@@ -19,6 +21,7 @@ public class Frame extends javax.swing.JFrame {
     /** Creates new form Frame */
     public Frame() {
         initComponents();
+        init();
     }
 
     /** This method is called from within the constructor to
@@ -33,6 +36,8 @@ public class Frame extends javax.swing.JFrame {
         optionPanel = new javax.swing.JPanel();
         foregroundColorLabel = new javax.swing.JLabel();
         foregroundColorComboBox = new javax.swing.JComboBox<>();
+        backgroundColorLabel = new javax.swing.JLabel();
+        backgroundColorComboBox = new javax.swing.JComboBox<>();
         drawingPanel = new es.ulpgc.eii.diu.DrawingPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,16 +55,29 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        backgroundColorLabel.setText("Choose background color:");
+
+        backgroundColorComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Black", "Blue", "Green", "Yellow", "Red", "White" }));
+        backgroundColorComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backgroundColorComboBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout optionPanelLayout = new javax.swing.GroupLayout(optionPanel);
         optionPanel.setLayout(optionPanelLayout);
         optionPanelLayout.setHorizontalGroup(
             optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(optionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(foregroundColorLabel)
+                .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(foregroundColorLabel)
+                    .addComponent(backgroundColorLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(foregroundColorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backgroundColorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(foregroundColorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         optionPanelLayout.setVerticalGroup(
             optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,6 +86,10 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(foregroundColorLabel)
                     .addComponent(foregroundColorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backgroundColorLabel)
+                    .addComponent(backgroundColorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -76,10 +98,13 @@ public class Frame extends javax.swing.JFrame {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 drawingPanelMouseDragged(evt);
             }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                drawingPanelMouseMoved(evt);
+            }
         });
         drawingPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                drawingPanelMouseReleased(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                drawingPanelMouseExited(evt);
             }
         });
 
@@ -91,7 +116,7 @@ public class Frame extends javax.swing.JFrame {
         );
         drawingPanelLayout.setVerticalGroup(
             drawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 226, Short.MAX_VALUE)
+            .addGap(0, 249, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,41 +144,78 @@ public class Frame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * Sets initial values, black color for foreground and white color
+     * for background.
+     */
+    private void init() {
+        drawingPanel.setForeground(Color.BLACK);
+        drawingPanel.setBackground(Color.WHITE);
+        foregroundColorComboBox.setSelectedItem("Black");
+        backgroundColorComboBox.setSelectedItem("White");
+    }
+
+    /**
      * Change of color to draw
      * Change the color based on selected item in the ComboBox
      * @param evt Change of selected item
      */
     private void foregroundColorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foregroundColorComboBoxActionPerformed
         String color = foregroundColorComboBox.getSelectedItem().toString();      
-        drawingPanel.setForegroundColor(color.toLowerCase());
+        drawingPanel.setForegroundFromString(color.toLowerCase());
     }//GEN-LAST:event_foregroundColorComboBoxActionPerformed
 
     /**
-     * On mouse drag show the dots.
-     * Since the drag event is called very often, to simulate delay,
+     * Change of color for backgroundArea
+     * Change the color based on selected item in the ComboBox
+     * @param evt Change of selected item
+     */
+    private void backgroundColorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorComboBoxActionPerformed
+        String color = backgroundColorComboBox.getSelectedItem().toString();      
+        drawingPanel.setBackgroundFromString(color.toLowerCase());
+    }//GEN-LAST:event_backgroundColorComboBoxActionPerformed
+
+    /**
+     * Move of mouse without click of button
+     * @param evt Move of mouse
+     */
+    private void drawingPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseMoved
+        moveMouse(evt.getX(), evt.getY());
+    }//GEN-LAST:event_drawingPanelMouseMoved
+
+    /**
+     * Mouse is out of drawing area
+     * @param evt Mouse exited drawing area
+     */
+    private void drawingPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseExited
+        drawingPanel.clearQueue();
+        drawingPanel.repaint();
+    }//GEN-LAST:event_drawingPanelMouseExited
+
+    /**
+     * Move of mouse with click of button
+     * @param evt Drag of mouse
+     */
+    private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
+        moveMouse(evt.getX(), evt.getY());
+    }//GEN-LAST:event_drawingPanelMouseDragged
+
+    /** 
+     * On mouse move show the dots.
+     * Since the move event is called very often, to simulate delay,
      * the action is called only on every fifth event.
      * It adds the actual position of mouse to queue of positions 
      * and calls the repaint method.
-     * @param evt Draw of mouse
+     * @param x X-coordinate of mouse
+     * @param y Y-coordinate of mouse
      */
-    private void drawingPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseDragged
+    private void moveMouse(int x, int y) {
         counter++;
         if (counter == DELAY) {
             counter = 0;
-            drawingPanel.addToQueue(evt.getX(), evt.getY());
+            drawingPanel.addToQueue(x, y);
             drawingPanel.repaint();
         }
-    }//GEN-LAST:event_drawingPanelMouseDragged
-
-    /**
-     * When mouse button is released, clear the drawing area,
-     * remove points from position queue and call the repaint method
-     * @param evt 
-     */
-    private void drawingPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawingPanelMouseReleased
-        drawingPanel.clearQueue();
-        drawingPanel.repaint();
-    }//GEN-LAST:event_drawingPanelMouseReleased
+    }
 
     /**
      * @param args the command line arguments
@@ -191,10 +253,11 @@ public class Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> backgroundColorComboBox;
+    private javax.swing.JLabel backgroundColorLabel;
     private es.ulpgc.eii.diu.DrawingPanel drawingPanel;
     private javax.swing.JComboBox<String> foregroundColorComboBox;
     private javax.swing.JLabel foregroundColorLabel;
     private javax.swing.JPanel optionPanel;
     // End of variables declaration//GEN-END:variables
-
 }

@@ -21,9 +21,9 @@ import javax.swing.JPanel;
 public class DrawingPanel extends JPanel {
 
     public Queue<Point> positions = new LinkedList<>(); //queue of points
-    private Color foregroundColor; //color, in which the dots will be drawn
     private final int SIZE_OF_TRACE = 10; //size of circle in px
     private final int QUEUE_LENGTH = 5; //length of queue, how many points to show
+
     /**
      * Method used to draw into the label
      * @param g Graphics object
@@ -31,9 +31,6 @@ public class DrawingPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        //set the color for painting
-        g.setColor(foregroundColor);
 
         //draw each point in queue as a filled circle
         positions.forEach((p) -> {
@@ -47,36 +44,41 @@ public class DrawingPanel extends JPanel {
     }
 
     /**
-     * Setter of foreground color from Color
-     * @param foregroundColor Color object
+     * Sets foreground color from String
+     * @param stringColor String representing color
      */
-    public void setForegroundColor(Color foregroundColor) {
-        this.foregroundColor = foregroundColor;
+    public void setForegroundFromString(String stringColor) {
+        Color color = getColorFromString(stringColor, Color.BLACK);
+        this.setForeground(color);
     }
 
     /**
-     * Setter of foreground color from String
-     * @param colorString String representing color
+     * Sets background color from String
+     * @param stringColor String representing color
      */
-    public void setForegroundColor(String colorString) {
+    public void setBackgroundFromString(String stringColor) {
+        Color color = getColorFromString(stringColor, Color.WHITE);
+        this.setBackground(color);
+    }
+
+    /**
+     * Method that extracts color from string. If it cannot be extracted, it
+     * sets the default value.
+     * @param stringColor Color represented by string
+     * @param defaultColor Color to be set if string cannot be resolved
+     * @return Color object
+     */
+    private Color getColorFromString(String stringColor, Color defaultColor) {
         Color color;
         try {
-            Field field = Class.forName("java.awt.Color").getField(colorString);
+            Field field = Class.forName("java.awt.Color").getField(stringColor);
             color = (Color) field.get(null);
         } catch (Exception e) {
-            color = Color.BLACK;
+            color = defaultColor;
         }
-        this.setForegroundColor(color);
+        return color;
     }
-
-    /**
-     * Getter of foreground color
-     * @return foreground color
-     */
-    public Color getForegroundColor() {
-        return this.foregroundColor;
-    }
-
+    
     /**
      * Add element to queue. 
      * Creates new point and adds to queue
