@@ -8,7 +8,6 @@ package es.ulpgc.eii.diu;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
 import javax.swing.JPanel;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -20,11 +19,17 @@ import org.opencv.imgproc.Imgproc;
  *
  */
 public class ImagePanel extends JPanel {
-    
+
+    /**
+     * Load the necessary library
+     */
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
-    
+
+    /**
+     * Mat object representing image
+     */
     private Mat mat;
     
     /**
@@ -41,8 +46,12 @@ public class ImagePanel extends JPanel {
             g.drawImage(scaledImage, 0, 0, this); // see javadoc for more info on the parameters        
         }
     }
-    
-    public void treshold(int value) {
+
+    /**
+     * Call the transformation and repaint image.
+     * @param value Threshold value in range (0-255)
+     */
+    public void threshold(int value) {
         mat = umbralizar(mat, value);
         this.repaint();
     }
@@ -61,10 +70,18 @@ public class ImagePanel extends JPanel {
         return imagenUmbralizada;
     }
     
+    /**
+     * Setter of Mat object
+     * @param mat Mat object
+     */
     public void setMat(Mat mat) {
         this.mat = mat;
     }
     
+    /**
+     * Getter of Mat object
+     * @return Mat object
+     */
     public Mat getMat() {
         return this.mat;
     }

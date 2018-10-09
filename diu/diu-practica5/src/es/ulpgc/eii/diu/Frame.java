@@ -19,8 +19,11 @@ import org.opencv.imgcodecs.Imgcodecs;
  */
 public class Frame extends javax.swing.JFrame {
 
-    JFileChooser openFileChooser;
-    JFileChooser saveFileChooser;
+    /**
+     * FileChooser for opening and saving files
+     */
+    JFileChooser fileChooser;
+
     /**
      * Creates new form Frame
      */
@@ -44,28 +47,29 @@ public class Frame extends javax.swing.JFrame {
         openMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        tresholdMenuItem = new javax.swing.JMenuItem();
+        thresholdMenuItem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Treshold images");
 
         javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
         imagePanel.setLayout(imagePanelLayout);
         imagePanelLayout.setHorizontalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 402, Short.MAX_VALUE)
         );
         imagePanelLayout.setVerticalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 281, Short.MAX_VALUE)
         );
 
         fileMenu.setText("File");
 
+        openMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         openMenuItem.setText("Open");
         openMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +78,7 @@ public class Frame extends javax.swing.JFrame {
         });
         fileMenu.add(openMenuItem);
 
+        saveMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         saveMenuItem.setText("Save");
         saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,15 +88,17 @@ public class Frame extends javax.swing.JFrame {
         fileMenu.add(saveMenuItem);
         fileMenu.add(jSeparator1);
 
-        tresholdMenuItem.setText("Treshold");
-        tresholdMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        thresholdMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        thresholdMenuItem.setText("Threshold");
+        thresholdMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tresholdMenuItemActionPerformed(evt);
+                thresholdMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(tresholdMenuItem);
+        fileMenu.add(thresholdMenuItem);
         fileMenu.add(jSeparator2);
 
+        exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,82 +138,71 @@ public class Frame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * 
-     * @param evt 
+     * Handle "Open" menu item.
+     * Get file from fileChooser and open it
+     * @param evt Selected menu item
      */
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-        if (openFileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            openFile(openFileChooser.getSelectedFile());
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            openFile(fileChooser.getSelectedFile());
         }
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     /**
-     * 
-     * @param evt 
+     * Handle "Save" menu item.
+     * Get file from fileChooser and save it
+     * @param evt Selected menu item
      */
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
-        if (saveFileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-            saveFile(saveFileChooser.getSelectedFile());
+        if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+            saveFile(fileChooser.getSelectedFile());
         }
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
     /**
-     * 
-     * @param evt 
+     * Handle "Threshold" menu item.
+     * @param evt Selected menu item
      */
-    private void tresholdMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresholdMenuItemActionPerformed
-        String value = JOptionPane.showInputDialog(this, "Enter value of treshold (0-255)");
-        Integer treshold = tryParse(value);
-        if (treshold >= 0 && treshold <= 255) {
-            imagePanel.treshold(treshold);
-        } else {
-            JOptionPane.showMessageDialog(this, 
-                    "Input must be integer value in range (0 - 255!)", 
-                    "Wrong input", 
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_tresholdMenuItemActionPerformed
+    private void thresholdMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thresholdMenuItemActionPerformed
+        showTresholdInputDialog();
+    }//GEN-LAST:event_thresholdMenuItemActionPerformed
 
     /**
-     * 
-     * @param evt 
+     * Handle "Exit" menu item.
+     * @param evt Selected menu item
      */
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        int confirmed = JOptionPane.showConfirmDialog(this, 
-                "Are you sure you want to exit the program?", 
-                "Exit Program",
-                JOptionPane.YES_NO_OPTION);
-        if (confirmed == JOptionPane.YES_OPTION) {
-            dispose();
-        }
+        confirmCloseWindow();
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     /**
-     * 
-     * @param evt 
+     * Handle "About" menu item.
+     * Show information dialog with info about application.
+     * @param evt Selected menu item
      */
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-        JOptionPane.showMessageDialog(this, 
-                "This application is designed to demonstrate\n options of Menus in Java Swing as well as\n transformation using treshold.\nULPGC, 2018\nDavid Bohmann, Petr Lukasik", 
-                "About", 
-                JOptionPane.INFORMATION_MESSAGE);     
+        showAboutDialog();
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     /**
      * Initialization of controls after start of program.
-     * Init fileChoosers and disable menu items that cannot be used after start
+     * Init fileChooser, disable menu items that cannot be used after start
+     * and add listener for closing window via Cross.
      */
     private void init() {
         FileFilter imageFilter = new FileNameExtensionFilter(
             "Image files", ImageIO.getReaderFileSuffixes());
-        openFileChooser = new JFileChooser();
-        openFileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        openFileChooser.setFileFilter(imageFilter);
-        saveFileChooser = new JFileChooser();
-        saveFileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        saveFileChooser.setFileFilter(imageFilter);
+        fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        fileChooser.setFileFilter(imageFilter);
         saveMenuItem.setEnabled(false);
-        tresholdMenuItem.setEnabled(false);
+        thresholdMenuItem.setEnabled(false);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                confirmCloseWindow();
+            }
+        });
     }
 
     /**
@@ -218,24 +214,64 @@ public class Frame extends javax.swing.JFrame {
         Mat mat = Imgcodecs.imread(file.getAbsolutePath());
         imagePanel.setMat(mat);
         saveMenuItem.setEnabled(true);
-        tresholdMenuItem.setEnabled(true);
+        thresholdMenuItem.setEnabled(true);
         imagePanel.repaint();
     }
 
     /**
      * Save file chosen with fileChooser
-     * If user doesn't provide file extension, use png as default.
+     * If user doesn't provide valid image file extension, use .png as default.
      * @param file File to save
      */
     private void saveFile(File file) {
-        Mat mat = imagePanel.getMat();
-        String path = file.getAbsolutePath();
-        if (!path.endsWith(".png") && !path.endsWith(".jpg") && !path.endsWith(".jpeg")) {
-            path = path.concat(".png");
-        }
-        Imgcodecs.imwrite(path, mat);
+        Mat mat = imagePanel.getMat();      
+        for (String suffix : ImageIO.getReaderFileSuffixes()) {
+            if (file.getAbsolutePath().endsWith(suffix)) {
+                Imgcodecs.imwrite(file.getAbsolutePath(), mat);
+                return;
+            }
+        }   
+        Imgcodecs.imwrite(file.getAbsolutePath().concat(".png"), mat);
     }
 
+    /**
+     * Show dialog with input, control that input is number in range (0-255).
+     * If input is correct, do the transformation, otherwise show error.
+     * Afterwards, threshold cannot be done again, disable menu item.
+     */
+    private void showTresholdInputDialog() {
+        String input = JOptionPane.showInputDialog(this, "Enter value of treshold (0-255)");
+        Integer value = tryParse(input);
+        if (value >= 0 && value <= 255) {
+            imagePanel.threshold(value);
+            thresholdMenuItem.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                    "Input must be integer value in range (0 - 255!)", 
+                    "Wrong input", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void showAboutDialog() {
+        JOptionPane.showMessageDialog(this, 
+                "This application is designed to demonstrate\n options of Menus in Java Swing as well as\n "
+                + "transformation using treshold.\nULPGC, 2018\nDavid Bohmann, Petr Lukasik", 
+                "About", 
+                JOptionPane.INFORMATION_MESSAGE);     
+    }
+    /**
+     * Show confirm dialog to close program when Exit menu item or Cross is clicked
+     */
+    private void confirmCloseWindow() {
+        int confirmed = JOptionPane.showConfirmDialog(this, 
+                "Are you sure you want to exit the program?", 
+                "Exit Program",
+                JOptionPane.YES_NO_OPTION);
+        if (confirmed == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }
     /**
      * Parses the text to integer and checks for exception
      * @param text String input
@@ -296,6 +332,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JMenuBar mainMenuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
-    private javax.swing.JMenuItem tresholdMenuItem;
+    private javax.swing.JMenuItem thresholdMenuItem;
     // End of variables declaration//GEN-END:variables
 }
