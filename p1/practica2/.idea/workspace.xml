@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="749a7371-b97e-4794-ba0d-6e2b176e07cd" name="Default" comment="" />
+    <list default="true" id="c68da617-6aff-4f5b-824c-0564341767e7" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,21 +15,45 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AuxiliarString.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/es/ulpgc/eii/p1/AuxiliarString.java">
+    <leaf>
+      <file leaf-file-name="Polinomio.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Polinomio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="814">
-              <caret line="95" column="1" selection-start-line="2" selection-end-line="95" selection-end-column="1" />
+            <state relative-caret-position="272">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+              <folding>
+                <element signature="e#214#215#0" expanded="true" />
+                <element signature="e#247#248#0" expanded="true" />
+                <element signature="e#508#509#0" expanded="true" />
+                <element signature="e#541#542#0" expanded="true" />
+                <element signature="e#710#711#0" expanded="true" />
+                <element signature="e#739#740#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsaAuxiliarString.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/es/ulpgc/eii/p1/UsaAuxiliarString.java">
+      <file leaf-file-name="UsaPolinomio.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UsaPolinomio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+            <state>
+              <caret column="24" selection-start-column="24" selection-end-column="24" />
+              <folding>
+                <element signature="e#156#157#0" expanded="true" />
+                <element signature="e#227#228#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PolinomioTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/PolinomioTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1275">
+              <caret line="265" selection-start-line="265" selection-end-line="265" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,8 +70,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/es/ulpgc/eii/p1/UsaAuxiliarString.java" />
-        <option value="$PROJECT_DIR$/src/es/ulpgc/eii/p1/AuxiliarString.java" />
+        <option value="$PROJECT_DIR$/test/p1/PolinomioTest.java" />
+        <option value="$PROJECT_DIR$/test/es/ulpgc/eii/p1/PolinomioTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/PolinomioTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UsaPolinomio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Polinomio.java" />
       </list>
     </option>
   </component>
@@ -53,14 +85,20 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="40" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="10" />
+    <option name="width" value="1004" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -83,22 +121,72 @@
               <item name="practica2" type="b2602c69:ProjectViewProjectNode" />
               <item name="practica2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practica2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practica2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practica2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practica2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="p1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practica2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practica2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practica2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practica2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practica2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practica2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="p1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practica2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -112,20 +200,101 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="UsaAuxiliarString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="es.ulpgc.eii.p1.UsaAuxiliarString" />
-      <module name="practica2" />
+  <component name="RunManager" selected="JUnit.PolinomioTest">
+    <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="PolinomioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="es.ulpgc.eii.p1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="es.ulpgc.eii.p1" />
+      <option name="MAIN_CLASS_NAME" value="es.ulpgc.eii.p1.PolinomioTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration name="PolinomioTest.testChangeOfCoeficientForGradeMoreThan1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="es.ulpgc.eii.p1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="es.ulpgc.eii.p1" />
+      <option name="MAIN_CLASS_NAME" value="es.ulpgc.eii.p1.PolinomioTest" />
+      <option name="METHOD_NAME" value="testChangeOfCoeficientForGradeMoreThan1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="PolinomioTest.testConstructorsWithParamsWithValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="es.ulpgc.eii.p1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="es.ulpgc.eii.p1" />
+      <option name="MAIN_CLASS_NAME" value="es.ulpgc.eii.p1.PolinomioTest" />
+      <option name="METHOD_NAME" value="testConstructorsWithParamsWithValue" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="PolinomioTest.testSumForP1Grade1P2Grade0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="es.ulpgc.eii.p1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="es.ulpgc.eii.p1" />
+      <option name="MAIN_CLASS_NAME" value="es.ulpgc.eii.p1.PolinomioTest" />
+      <option name="METHOD_NAME" value="testSumForP1Grade1P2Grade0" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -165,9 +334,18 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="JUnit.PolinomioTest" />
+      <item itemvalue="JUnit.PolinomioTest.testConstructorsWithParamsWithValue" />
+      <item itemvalue="JUnit.PolinomioTest.testChangeOfCoeficientForGradeMoreThan1" />
+      <item itemvalue="JUnit.PolinomioTest.testSumForP1Grade1P2Grade0" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UsaAuxiliarString" />
+        <item itemvalue="JUnit.PolinomioTest" />
+        <item itemvalue="JUnit.PolinomioTest.testSumForP1Grade1P2Grade0" />
+        <item itemvalue="JUnit.PolinomioTest.testChangeOfCoeficientForGradeMoreThan1" />
+        <item itemvalue="JUnit.PolinomioTest.testConstructorsWithParamsWithValue" />
       </list>
     </recent_temporary>
   </component>
@@ -176,51 +354,82 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="749a7371-b97e-4794-ba0d-6e2b176e07cd" name="Default" comment="" />
-      <created>1537349662566</created>
+      <changelist id="c68da617-6aff-4f5b-824c-0564341767e7" name="Default" comment="" />
+      <created>1539159038632</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1537349662566</updated>
-      <workItem from="1537349667147" duration="4997000" />
-      <workItem from="1537789290607" duration="807000" />
+      <updated>1539159038632</updated>
+      <workItem from="1539159043369" duration="9837000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="PolinomioTest_testSumForP1Grade1P2Grade0 - 2018.10.10 at 12h 04m 15s.xml">
+      <configuration name="PolinomioTest.testSumForP1Grade1P2Grade0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest - 2018.10.10 at 12h 04m 30s.xml">
+      <configuration name="PolinomioTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest - 2018.10.10 at 12h 05m 29s.xml">
+      <configuration name="PolinomioTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest - 2018.10.10 at 12h 06m 37s.xml">
+      <configuration name="PolinomioTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest_testSumForP1Grade1P2Grade0 - 2018.10.10 at 12h 09m 16s.xml">
+      <configuration name="PolinomioTest.testSumForP1Grade1P2Grade0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest - 2018.10.10 at 12h 09m 23s.xml">
+      <configuration name="PolinomioTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest - 2018.10.10 at 12h 10m 34s.xml">
+      <configuration name="PolinomioTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest - 2018.10.10 at 12h 11m 26s.xml">
+      <configuration name="PolinomioTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest - 2018.10.10 at 12h 20m 11s.xml">
+      <configuration name="PolinomioTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolinomioTest - 2018.10.10 at 15h 26m 39s.xml">
+      <configuration name="PolinomioTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5804000" />
+    <option name="totallyTimeSpent" value="9837000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" weight="0.32925585" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32925585" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" visible="true" weight="0.32925585" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,34 +438,147 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="5" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/es/ulpgc/eii/p1/AuxiliarString.java">
+    <entry file="file://$PROJECT_DIR$/test/es/ulpgc/eii/p1/PolinomioTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="95" column="1" lean-forward="true" selection-start-line="2" selection-end-line="95" selection-end-column="1" />
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-end-line="416" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/es/ulpgc/eii/p1/UsaAuxiliarString.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        <state relative-caret-position="211">
+          <caret line="258" column="17" selection-start-line="258" selection-start-column="17" selection-end-line="258" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/es/ulpgc/eii/p1/UsaAuxiliarString.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        <state relative-caret-position="525">
+          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/es/ulpgc/eii/p1/AuxiliarString.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/PolinomioTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="95" column="1" selection-start-line="2" selection-end-line="95" selection-end-column="1" />
+        <state relative-caret-position="-1275">
+          <caret line="265" selection-start-line="265" selection-end-line="265" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UsaPolinomio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+          <folding>
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Polinomio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#541#542#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>practica2</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: junit:junit:4.12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
