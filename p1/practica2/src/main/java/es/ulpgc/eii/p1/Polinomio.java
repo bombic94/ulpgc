@@ -24,7 +24,8 @@ public class Polinomio {
 
     /**
      * Constructor with array parameter
-     * @param v
+     * If array is empty, create one with 0 value
+     * @param v Array of coefficients
      */
     public Polinomio(int[] v) {
         if (v.length == 0) {
@@ -34,10 +35,19 @@ public class Polinomio {
         computeGrade();
     }
 
+    /**
+     * Degree of polynom
+     * @return Degree value
+     */
     public int grado() {
         return this.grade;
     }
 
+    /**
+     * Value of coefficient on given position
+     * @param i Position of coefficient
+     * @return Value of coefficient
+     */
     public int coeficiente(int i) {
         if (i > this.v.length) {
             return 0;
@@ -45,10 +55,19 @@ public class Polinomio {
         return this.v[i];
     }
 
+    /**
+     * Array of coefficients
+     * @return array of coefficients
+     */
     public int[] coeficientes() {
         return this.v;
     }
 
+    /**
+     * Set coefficient on given position to value
+     * @param index Position of coefficient
+     * @param value New calue of coefficient
+     */
     public void coeficiente(int index, int value) {
         if (index == this.v.length - 1 && value == 0) {
             this.v[index] = value;
@@ -64,6 +83,11 @@ public class Polinomio {
 
     }
 
+    /**
+     * Compute value of polynom with given variable value
+     * @param x Valoue of variable
+     * @return Computed value of polynom
+     */
     public float valor(float x) {
         float result = 0;
         for (int i = this.v.length - 1; i >= 0; i--) {
@@ -72,6 +96,11 @@ public class Polinomio {
         return result;
     }
 
+    /**
+     * Sum of two polynoms
+     * @param p Polynom to add
+     * @return Polynom made by sum of two polynoms
+     */
     public Polinomio suma(Polinomio p) {
         int[] tmp = new int[Math.max(p.v.length, this.v.length)];
         for (int i = 0; i < tmp.length; i++) {
@@ -89,6 +118,11 @@ public class Polinomio {
         return this;
     }
 
+    /**
+     * Difference of two polynoms
+     * @param p Polynom to subtract
+     * @return Polynom made by subtraction of two polynoms
+     */
     public Polinomio resta(Polinomio p) {
         int[] tmp = new int[ Math.max(p.v.length, this.v.length)];
         for (int i = 0; i < tmp.length; i++) {
@@ -106,6 +140,10 @@ public class Polinomio {
         return this;
     }
 
+    /**
+     * Mathematical equation of polynom
+     * @return Mathematical equation of polynom
+     */
     @Override
     public String toString() {
         if (grade == 0) {
@@ -143,6 +181,10 @@ public class Polinomio {
     }
 
     /** PRIVATE METHODS */
+
+    /**
+     * Used to compute grade after change of array
+     */
     private void computeGrade() {
         this.grade = 0;
         for (int i = 0; i < this.v.length; i++) {
@@ -152,12 +194,19 @@ public class Polinomio {
         }
     }
 
+    /**
+     * Make array shorter
+     */
     private void shorterVector() {
         int[] tmp = new int[grade + 1];
         System.arraycopy(v, 0, tmp, 0, tmp.length);
         this.v = tmp;
     }
 
+    /**
+     * Make array londer
+     * @param len Size of new array
+     */
     private void longerVector(int len) {
         int[] tmp = new int[len];
         System.arraycopy(v, 0, tmp, 0, v.length);
