@@ -52,22 +52,25 @@ public class ImagePanel extends JPanel {
      * @param value Threshold value in range (0-255)
      */
     public void threshold(int value) {
-        mat = umbralizar(mat, value);
+        mat = applyThreshold(mat, value);
         this.repaint();
     }
-    
-    private Mat umbralizar(Mat imagen_original, Integer umbral) {
-        // crear dos imágenes en niveles de gris con el mismo tamaño que la original
-        Mat imagenGris = new Mat(imagen_original.rows(), imagen_original.cols(), CvType.CV_8U);
-        Mat imagenUmbralizada = new Mat(imagen_original.rows(), imagen_original.cols(), CvType.CV_8U); 
-        // convierte a niveles de grises la imagen original
-        Imgproc.cvtColor(imagen_original, imagenGris, Imgproc.COLOR_BGR2GRAY);       
-        // umbraliza la imagen:  
-        // ‐ píxeles con nivel de gris > umbral se ponen a 1
-        // ‐ píxeles con nivel de gris <= umbra se ponen a 0
-        Imgproc.threshold(imagenGris, imagenUmbralizada, umbral, 255, Imgproc.THRESH_BINARY);
-        // se devuelve la imagen umbralizada
-        return imagenUmbralizada;
+
+    /**
+     * Creates two images on grey scale, converts original image to grey scale,
+     * and based on level of grey, every pixel is converted to 0 or 1.
+     * pixels with grey level greater than threshold are converted to 1
+     * pixels with grey level less than of equal to threshold are converted to 0
+     * @param originalImage Colored input image
+     * @param value Threshold value in range (0-255)
+     * @return Thresholded image
+     */
+    private Mat applyThreshold(Mat originalImage, Integer value) {
+        Mat imageGrey = new Mat(originalImage.rows(), originalImage.cols(), CvType.CV_8U);
+        Mat imageTresholded = new Mat(originalImage.rows(), originalImage.cols(), CvType.CV_8U); 
+        Imgproc.cvtColor(originalImage, imageGrey, Imgproc.COLOR_BGR2GRAY);       
+        Imgproc.threshold(imageGrey, imageTresholded, value, 255, Imgproc.THRESH_BINARY);
+        return imageTresholded;
     }
     
     /**

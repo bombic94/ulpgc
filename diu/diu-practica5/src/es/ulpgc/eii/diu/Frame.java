@@ -195,6 +195,7 @@ public class Frame extends javax.swing.JFrame {
         fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         fileChooser.setFileFilter(imageFilter);
+        fileChooser.setAcceptAllFileFilterUsed(false);
         saveMenuItem.setEnabled(false);
         thresholdMenuItem.setEnabled(false);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -213,7 +214,6 @@ public class Frame extends javax.swing.JFrame {
     private void openFile(File file) {
         Mat mat = Imgcodecs.imread(file.getAbsolutePath());
         imagePanel.setMat(mat);
-        saveMenuItem.setEnabled(true);
         thresholdMenuItem.setEnabled(true);
         imagePanel.repaint();
     }
@@ -245,6 +245,7 @@ public class Frame extends javax.swing.JFrame {
         if (value >= 0 && value <= 255) {
             imagePanel.threshold(value);
             thresholdMenuItem.setEnabled(false);
+            saveMenuItem.setEnabled(true);
         } else {
             JOptionPane.showMessageDialog(this, 
                     "Input must be integer value in range (0 - 255!)", 
