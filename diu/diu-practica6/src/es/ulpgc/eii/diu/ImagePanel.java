@@ -7,20 +7,17 @@ package es.ulpgc.eii.diu;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.highgui.HighGui;
 
 /**
- *
- * @author David
+ * Panel created for showing loaded images in original size
  */
 public class ImagePanel extends JPanel {
-    
+
     /**
      * Load the necessary library
      */
@@ -32,7 +29,7 @@ public class ImagePanel extends JPanel {
      * Mat object representing image
      */
     private Mat mat;
-    
+
     /**
      * Method used to paint image after change.
      * @param g Graphics
@@ -45,7 +42,11 @@ public class ImagePanel extends JPanel {
             g.drawImage(image, 0, 0, this);    
         }
     }
-    
+
+    /**
+     * Get preferred size so that scrollpane can adjust scrollbars.
+     * @return Dimension with preferred size
+     */
     @Override
     public Dimension getPreferredSize() {
         if (mat == null) {
@@ -53,6 +54,7 @@ public class ImagePanel extends JPanel {
         }
         return new Dimension(mat.cols(), mat.rows());
     }
+
     /**
      * Setter of Mat object
      * @param mat Mat object

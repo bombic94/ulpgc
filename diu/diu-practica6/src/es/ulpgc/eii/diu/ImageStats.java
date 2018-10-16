@@ -5,10 +5,6 @@
  */
 package es.ulpgc.eii.diu;
 
-/**
- *
- * @author David
- */
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -20,6 +16,9 @@ import org.opencv.core.Mat;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 
+/**
+ * ImageStats for computing color statistics of showed part of image
+ */
 public class ImageStats {
 
     public final int BLUE = 0;
@@ -32,38 +31,47 @@ public class ImageStats {
     private int min[] = new int[3];
     private int mean[] = new int[3];
 
+    /**
+     * Get array of maximum values
+     * @return array of maximum values
+     */
     public int[] getMax() {
         return max;
     }
 
+    /**
+     * Get array of minimum values
+     * @return array of minimum values
+     */
     public int[] getMin() {
         return min;
     }
 
+    /**
+     * Get array of mean values
+     * @return array of mean values
+     */
     public int[] getMean() {
         return mean;
     }
 
-    public void computeStats(Mat imageColor, Point point,
-            Dimension dimVisible) {
-
-        // crea la subimagen correspondiente al viewport
-        Mat subImage = new Mat(imageColor, new Rect(point.x, point.y,
-                dimVisible.width, dimVisible.height));
-
-        // separa los tres canales de la subimagen BGR
+    /**
+     * Creates subImage from original image,
+     * separates three color canals in RGB,
+     * and for each canal obtains minimum and maximum value,
+     * then calculates average mean of the canal.
+     * @param imageColor Mat object representing whole image
+     * @param point Top left point of showed part of image
+     * @param dimVisible Size of showed part of image
+     */
+    public void computeStats(Mat imageColor, Point point, Dimension dimVisible) {
+        Mat subImage = new Mat(imageColor, new Rect(point.x, point.y, dimVisible.width, dimVisible.height));
         ArrayList<Mat> bgr = new ArrayList<>();
         split(subImage, bgr);
-
-        // estadisticas 
         ImageStats res = new ImageStats();
-
         for (int c : res.Components) {
-            // obtiene el máximo y mínimo del canal c de la subimagen
             Core.MinMaxLocResult minmax = minMaxLoc(bgr.get(c));
-            // calcula el premodio del canal c de la subimagen
             Scalar prom_scalar = mean(bgr.get(c));
-
             this.max[c] = (int) minmax.maxVal;
             this.min[c] = (int) minmax.minVal;
             this.mean[c] = (int) prom_scalar.val[0];

@@ -10,21 +10,23 @@ import java.awt.event.AdjustmentListener;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 
-/**
- *
- * @author David
- */
 public class Frame extends javax.swing.JFrame {
 
+    /**
+     * FileChooser for opening files
+     */
     private JFileChooser fileChooser;
+
+    /**
+     * ImageStats for computing image statistics
+     */
     private ImageStats imageStats;
+
     /**
      * Creates new form Frame
      */
@@ -208,18 +210,31 @@ public class Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Handle "Exit" menu item.
+     * @param evt Selected menu item
+     */
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         this.dispose();
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+    /**
+     * Handle "Open" menu item.
+     * Get file from fileChooser and open it
+     * @param evt Selected menu item
+     */
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             openFile(fileChooser.getSelectedFile());
         }
     }//GEN-LAST:event_openMenuItemActionPerformed
 
+    /**
+     * Compute values for image and show values in text fields.
+     * @param evt Move of scrollbar or scrolling
+     */
     private void computeValues(AdjustmentEvent evt) {                                             
-        imageStats.computeStats(imagePanel.getMat(), scrollPane.getViewport().getViewPosition(), scrollPane.getViewport().getViewSize());
+        imageStats.computeStats(imagePanel.getMat(), scrollPane.getViewport().getViewPosition(), scrollPane.getViewport().getSize());
         BlueMaxTextField.setText(Integer.toString(imageStats.getMax()[imageStats.BLUE]));
         BlueMeanTextField.setText(Integer.toString(imageStats.getMean()[imageStats.BLUE]));
         BlueMinTextField.setText(Integer.toString(imageStats.getMin()[imageStats.BLUE]));
@@ -230,15 +245,49 @@ public class Frame extends javax.swing.JFrame {
         RedMeanTextField.setText(Integer.toString(imageStats.getMean()[imageStats.RED]));
         RedMinTextField.setText(Integer.toString(imageStats.getMin()[imageStats.RED]));
     }
-    
+
+    /**
+     * Initialization of controls after start of program.
+     * Create new ImageStats object, init fileChooser, 
+     * and add listener for scrolling in ScrollPane.
+     */
+    private void init() {
+        imageStats = new ImageStats();
+
+        FileFilter imageFilter = new FileNameExtensionFilter(
+            "Image files", ImageIO.getReaderFileSuffixes());
+        fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        fileChooser.setFileFilter(imageFilter);
+        fileChooser.setAcceptAllFileFilterUsed(false);
+
+        scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent evt) {
+                computeValues(evt);
+            }
+        });
+        scrollPane.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent evt) {
+                computeValues(evt);
+            }
+        });
+    }
+
+    /**
+     * Open file chosen with fileChooser.
+     * After loading file update scrollPane to adjust scrollbars to selected image size
+     * @param file File to open
+     */
     private void openFile(File file) {
         Mat mat = Imgcodecs.imread(file.getAbsolutePath());
         imagePanel.setMat(mat);
         imagePanel.repaint();
         scrollPane.revalidate();
         scrollPane.repaint();
-        
     }
+
     /**
      * @param args the command line arguments
      */
@@ -298,28 +347,4 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel redLabel;
     private javax.swing.JScrollPane scrollPane;
     // End of variables declaration//GEN-END:variables
-
-    private void init() {
-        imageStats = new ImageStats();
-        
-        FileFilter imageFilter = new FileNameExtensionFilter(
-            "Image files", ImageIO.getReaderFileSuffixes());
-        fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        fileChooser.setFileFilter(imageFilter);
-        fileChooser.setAcceptAllFileFilterUsed(false);
-        
-        scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
-            @Override
-            public void adjustmentValueChanged(AdjustmentEvent evt) {
-                computeValues(evt);
-            }
-        });
-        scrollPane.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
-            @Override
-            public void adjustmentValueChanged(AdjustmentEvent evt) {
-                computeValues(evt);
-            }
-        });
-    }
 }

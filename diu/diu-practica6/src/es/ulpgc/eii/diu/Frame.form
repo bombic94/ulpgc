@@ -243,7 +243,7 @@
       <SubComponents>
         <Container class="es.ulpgc.eii.diu.ImagePanel" name="imagePanel">
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
         </Container>
       </SubComponents>
     </Container>
