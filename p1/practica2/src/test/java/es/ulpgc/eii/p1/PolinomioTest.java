@@ -3,6 +3,9 @@ package es.ulpgc.eii.p1;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+/**
+ * Test cases for Polynom class
+ */
 public class PolinomioTest {
 
     /***********************************************
@@ -112,11 +115,12 @@ public class PolinomioTest {
     }
 
     @Test
-    public void TestCoeficientGradeMoreThan1() {
-        int[] v = new int[]{1, 2, 0, 3};
+    public void testCoeficientGradeMoreThan1() {
+        int[] v = new int []{1, 2, 0, 3};
         Polinomio p = new Polinomio(v);
         assertEquals(3, p.coeficiente(3));
         assertEquals(0, p.coeficiente(5));
+        assertEquals(0, p.coeficiente(-2));
         assertEquals(1, p.coeficiente(0));
     }
 

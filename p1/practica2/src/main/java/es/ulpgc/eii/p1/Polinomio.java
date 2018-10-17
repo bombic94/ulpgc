@@ -44,23 +44,26 @@ public class Polinomio {
     }
 
     /**
-     * Value of coefficient on given position
+     * Value of coefficient on given position.
+     * If given position is not valid number, return 0.
      * @param i Position of coefficient
      * @return Value of coefficient
      */
     public int coeficiente(int i) {
-        if (i > this.v.length) {
+        if (i > this.v.length || i < 0) {
             return 0;
         }
         return this.v[i];
     }
 
     /**
-     * Array of coefficients
-     * @return array of coefficients
+     * Array of coefficients.
+     * @return copy of array of coefficients
      */
     public int[] coeficientes() {
-        return this.v;
+        int[] copy = new int[this.v.length];
+        System.arraycopy(v, 0, copy, 0, copy.length);
+        return copy;
     }
 
     /**
