@@ -5,6 +5,7 @@
  */
 package es.ulpgc.eii.diu;
 
+import java.awt.Dimension;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.io.File;
@@ -233,8 +234,23 @@ public class Frame extends javax.swing.JFrame {
      * Compute values for image and show values in text fields.
      * @param evt Move of scrollbar or scrolling
      */
-    private void computeValues(AdjustmentEvent evt) {                                             
-        imageStats.computeStats(imagePanel.getMat(), scrollPane.getViewport().getViewPosition(), scrollPane.getViewport().getSize());
+    private void computeValues() {  
+        final Dimension dim;
+        try { //lazy init of mat, values will be computed later
+            if (imagePanel.getMat().rows() >= scrollPane.getViewport().getHeight() && imagePanel.getMat().cols() >= scrollPane.getViewport().getWidth()) {
+                dim = scrollPane.getViewport().getSize();
+            } else if (imagePanel.getMat().rows() >= scrollPane.getViewport().getHeight() && imagePanel.getMat().cols() < scrollPane.getViewport().getWidth()) {
+                dim = new Dimension(imagePanel.getMat().cols(), scrollPane.getViewport().getHeight());
+            } else if (imagePanel.getMat().rows() < scrollPane.getViewport().getHeight() && imagePanel.getMat().cols() >= scrollPane.getViewport().getWidth()) {
+                dim = new Dimension(scrollPane.getViewport().getWidth(), imagePanel.getMat().rows());
+            } else {
+                dim = new Dimension(imagePanel.getMat().cols(), imagePanel.getMat().rows());
+            }
+            imageStats.computeStats(imagePanel.getMat(), scrollPane.getViewport().getViewPosition(), dim);
+        }
+        catch (NullPointerException e) {
+            return;
+        }
         BlueMaxTextField.setText(Integer.toString(imageStats.getMax()[imageStats.BLUE]));
         BlueMeanTextField.setText(Integer.toString(imageStats.getMean()[imageStats.BLUE]));
         BlueMinTextField.setText(Integer.toString(imageStats.getMin()[imageStats.BLUE]));
@@ -264,13 +280,13 @@ public class Frame extends javax.swing.JFrame {
         scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent evt) {
-                computeValues(evt);
+                computeValues();
             }
         });
         scrollPane.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent evt) {
-                computeValues(evt);
+                computeValues();
             }
         });
     }
@@ -286,6 +302,7 @@ public class Frame extends javax.swing.JFrame {
         imagePanel.repaint();
         scrollPane.revalidate();
         scrollPane.repaint();
+        computeValues();
     }
 
     /**
