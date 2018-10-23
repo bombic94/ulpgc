@@ -5,12 +5,15 @@
  */
 package es.ulpgc.eii.diu;
 
+import java.awt.Point;
+
 /**
  *
  * @author David
  */
 public class InternalFrame extends javax.swing.JInternalFrame {
 
+    private Point point;
     /**
      * Creates new form InternalFrame
      */
@@ -28,6 +31,21 @@ public class InternalFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         imagePanel = new es.ulpgc.eii.diu.ImagePanel();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                formComponentMoved(evt);
+            }
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
         imagePanel.setLayout(imagePanelLayout);
@@ -54,12 +72,37 @@ public class InternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentMoved
+        calculate(evt);
+    }//GEN-LAST:event_formComponentMoved
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        calculate(evt);
+    }//GEN-LAST:event_formComponentShown
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        calculate(evt);
+    }//GEN-LAST:event_formComponentHidden
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        calculate(evt);
+    }//GEN-LAST:event_formComponentResized
+
+    
+    private void calculate(java.awt.event.ComponentEvent evt) {
+        int x = evt.getComponent().getX() + evt.getComponent().getWidth() + 16;
+        int y = evt.getComponent().getY() + evt.getComponent().getHeight() + 40;
+        point = new Point(x, y);
+        Frame frame = (Frame) this.getTopLevelAncestor();
+        frame.computeBounds();
+    }
+    
     public ImagePanel getImagePanel() {
         return this.imagePanel;
     }
     
-    public void setImagePanel(ImagePanel imagePanel) {
-        this.imagePanel = imagePanel;
+    public Point getPoint() {
+        return this.point;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

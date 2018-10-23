@@ -5,6 +5,7 @@
  */
 package es.ulpgc.eii.diu;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -68,8 +69,6 @@ public class Frame extends javax.swing.JFrame {
         thresholdMenuItem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Treshold images");
@@ -118,18 +117,6 @@ public class Frame extends javax.swing.JFrame {
 
         mainMenuBar.add(fileMenu);
 
-        helpMenu.setText("Help");
-
-        aboutMenuItem.setText("About");
-        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutMenuItemActionPerformed(evt);
-            }
-        });
-        helpMenu.add(aboutMenuItem);
-
-        mainMenuBar.add(helpMenu);
-
         setJMenuBar(mainMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,15 +159,6 @@ public class Frame extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         confirmCloseWindow();
     }//GEN-LAST:event_exitMenuItemActionPerformed
-
-    /**
-     * Handle "About" menu item.
-     * Show information dialog with info about application.
-     * @param evt Selected menu item
-     */
-    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-        showAboutDialog();
-    }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     /**
      * Initialization of controls after start of program.
@@ -226,6 +204,22 @@ public class Frame extends javax.swing.JFrame {
         desktopPanel.setDesktopManager(manager);
     }
 
+    public void computeBounds() {
+        int x = 0;
+        int y = 0;
+        for (InternalFrame frame : internalFrames) {
+            if (frame.getPoint().x > x) {
+                x = frame.getPoint().x;
+            }
+            if (frame.getPoint().y > y) {
+                y = frame.getPoint().y;
+            }
+        }
+        y += mainMenuBar.getHeight();
+        System.out.format("setting min size: %d, %d", x, y);
+        this.setMinimumSize(new Dimension(x, y));
+    }
+    
     /**
      * Open file chosen with fileChooser.
      * After loading file enable menu items to transform and save image.
@@ -261,13 +255,6 @@ public class Frame extends javax.swing.JFrame {
         }
     }
 
-    private void showAboutDialog() {
-        JOptionPane.showMessageDialog(this, 
-                "This application is designed to demonstrate\n options of Menus in Java Swing as well as\n "
-                + "transformation using treshold.\nULPGC, 2018\nDavid Bohmann, Petr Lukasik", 
-                "About", 
-                JOptionPane.INFORMATION_MESSAGE);     
-    }
     /**
      * Show confirm dialog to close program when Exit menu item or Cross is clicked
      */
@@ -301,7 +288,7 @@ public class Frame extends javax.swing.JFrame {
         internalFrame.setMaximizable(true);
         internalFrame.setClosable(true);
         internalFrame.setTitle(title);
-        internalFrame.setLocation(internalFrames.size() * 20, internalFrames.size() * 20);
+        internalFrame.setLocation((internalFrames.size() * 20) % 200, (internalFrames.size() * 20) % 200);
         internalFrames.add(internalFrame);
         this.desktopPanel.add(internalFrame);
         internalFrame.show();
@@ -345,11 +332,9 @@ public class Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JDesktopPane desktopPanel;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuBar mainMenuBar;
