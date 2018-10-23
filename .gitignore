@@ -18,6 +18,7 @@
 *.zip
 *.tar.gz
 *.rar
+*.dll
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -33,3 +34,6 @@ hs_err_pid*
 /diu/diu-practica5/build/
 /diu/diu-practica6/nbproject/private/
 /diu/diu-practica6/build/
+/diu/diu-practica7/nbproject/private/
+/diu/diu-practica7/build/
+/diu/diu-practica7/dist/
