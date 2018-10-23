@@ -216,7 +216,6 @@ public class Frame extends javax.swing.JFrame {
             }
         }
         y += mainMenuBar.getHeight();
-        System.out.format("setting min size: %d, %d", x, y);
         this.setMinimumSize(new Dimension(x, y));
     }
     

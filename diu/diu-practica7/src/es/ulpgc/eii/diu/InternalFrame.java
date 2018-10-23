@@ -91,7 +91,7 @@ public class InternalFrame extends javax.swing.JInternalFrame {
     
     private void calculate(java.awt.event.ComponentEvent evt) {
         int x = evt.getComponent().getX() + evt.getComponent().getWidth() + 16;
-        int y = evt.getComponent().getY() + evt.getComponent().getHeight() + 40;
+        int y = evt.getComponent().getY() + evt.getComponent().getHeight() + 39;
         point = new Point(x, y);
         Frame frame = (Frame) this.getTopLevelAncestor();
         frame.computeBounds();
