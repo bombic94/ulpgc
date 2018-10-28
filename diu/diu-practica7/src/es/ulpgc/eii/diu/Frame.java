@@ -16,6 +16,9 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.opencv.core.Core;
@@ -33,7 +36,7 @@ public class Frame extends javax.swing.JFrame {
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
-    
+
     /**
      * FileChooser for opening and saving files
      */
@@ -43,7 +46,12 @@ public class Frame extends javax.swing.JFrame {
      * List of internal frames
      */
     ArrayList<InternalFrame> internalFrames;
-    
+
+    /**
+     * Value of threshold chosen by JSlider
+     */
+    int thresholdValue;
+
     /**
      * Creates new form Frame
      */
@@ -164,6 +172,7 @@ public class Frame extends javax.swing.JFrame {
      * Initialization of controls after start of program.
      * Init fileChooser, disable menu items that cannot be used after start
      * and add listener for closing window via Cross.
+     * Set desktop manager so internal panels cannot be moved outside visible area.
      */
     private void init() {
         FileFilter imageFilter = new FileNameExtensionFilter(
@@ -183,7 +192,6 @@ public class Frame extends javax.swing.JFrame {
         desktopPanel.setDragMode(JDesktopPane.LIVE_DRAG_MODE);
         
         DesktopManager manager = new DefaultDesktopManager() {
-        /** This moves the <code>JComponent</code> and repaints the damaged areas. */
             @Override
             public void setBoundsForFrame(JComponent f, int newX, int newY, int newWidth, int newHeight) {
                 boolean didResize = (f.getWidth() != newWidth || f.getHeight() != newHeight);
@@ -204,6 +212,10 @@ public class Frame extends javax.swing.JFrame {
         desktopPanel.setDesktopManager(manager);
     }
 
+    /**
+     * Method for computing bounds so the desktop pane 
+     * cannot be set to size smaller than internal panes
+     */
     public void computeBounds() {
         int x = 0;
         int y = 0;
@@ -239,18 +251,13 @@ public class Frame extends javax.swing.JFrame {
      * If input is correct, do the transformation, otherwise show error.
      * Afterwards, threshold cannot be done again, disable menu item.
      */
-    private void showTresholdInputDialog() {
-        String input = JOptionPane.showInputDialog(this, "Enter value of treshold (0-255)");
-        Integer value = tryParse(input);
-        if (value >= 0 && value <= 255) {
+    private void showTresholdInputDialog() {    
+        thresholdValue = 0;
+        int confirmed = JOptionPane.showConfirmDialog(this, new Object[] { "Select a value:", getSlider() }, "Treshold", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);      
+        if (confirmed == JOptionPane.OK_OPTION) {
             Mat original = internalFrames.get(0).getImagePanel().getMat();
-            InternalFrame internalFrame = createInternalFrame(original, "Treshold: " + value);
-            internalFrame.getImagePanel().threshold(value);
-        } else {
-            JOptionPane.showMessageDialog(this, 
-                    "Input must be integer value in range (0 - 255!)", 
-                    "Wrong input", 
-                    JOptionPane.ERROR_MESSAGE);
+            InternalFrame internalFrame = createInternalFrame(original, "Treshold: " + thresholdValue);
+            internalFrame.getImagePanel().threshold(thresholdValue);
         }
     }
 
@@ -266,20 +273,13 @@ public class Frame extends javax.swing.JFrame {
             this.dispose();
         }
     }
-    /**
-     * Parses the text to integer and checks for exception
-     * @param text String input
-     * @return Parsed integer from text
-     */
-    private Integer tryParse(String text) {
-        try {
-            return Integer.parseInt(text);         
-        } catch (NumberFormatException e) {
-            System.out.println("Input must be integer value!");
-            return -1;
-        }
-    }
 
+    /**
+     * Create internal frame with given params
+     * @param mat Image to be shown
+     * @param title Title of internal pane
+     * @return Internal pane instance
+     */
     private InternalFrame createInternalFrame(Mat mat, String title) {
         InternalFrame internalFrame = new InternalFrame();      
         internalFrame.getImagePanel().setMat(mat);
@@ -295,6 +295,27 @@ public class Frame extends javax.swing.JFrame {
         return internalFrame;
     }
     
+    /**
+     * Create slider for threshold choosing.
+     * @return Slider instance
+     */
+    private JSlider getSlider() {
+        JSlider slider = new JSlider();
+        slider.setMaximum(255);
+        slider.setMinimum(0);
+        slider.setMinorTickSpacing(10);
+        slider.setMajorTickSpacing(50);
+        slider.setValue(0);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        ChangeListener changeListener = (ChangeEvent changeEvent) -> {
+            JSlider theSlider = (JSlider) changeEvent.getSource();
+            thresholdValue = theSlider.getValue();
+        };
+        slider.addChangeListener(changeListener);
+        return slider;
+    }
+     
     /**
      * @param args the command line arguments
      */
@@ -329,7 +350,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPanel;
     private javax.swing.JMenuItem exitMenuItem;
