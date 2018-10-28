@@ -162,6 +162,13 @@ public class PolinomioTest {
         assertArrayEquals(v, p.coeficientes());
     }
 
+    @Test
+    public void testCoeficientsGradeMoreThan1WithZeroes() {
+        int[] v = new int[]{1, 2, 0, 3, 0, 0};
+        Polinomio p = new Polinomio(v);
+        assertArrayEquals(new int[]{1, 2, 0, 3}, p.coeficientes());
+    }
+
     /***********************************************
      * Change of coeficient testing
      **********************************************/
@@ -259,6 +266,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("3", p1.suma(p2).toString());
+        assertEquals(0, p1.suma(p2).grado());
     }
 
     @Test
@@ -268,6 +276,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("x+3", p1.suma(p2).toString());
+        assertEquals(1, p1.suma(p2).grado());
     }
 
     @Test
@@ -277,6 +286,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("3x^3+2x+1", p1.suma(p2).toString());
+        assertEquals(3, p1.suma(p2).grado());
     }
 
     @Test
@@ -286,6 +296,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("x+2", p1.suma(p2).toString());
+        assertEquals(1, p1.suma(p2).grado());
     }
 
     @Test
@@ -295,6 +306,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("6x+4", p1.suma(p2).toString());
+        assertEquals(1, p1.suma(p2).grado());
     }
 
     @Test
@@ -304,6 +316,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("3x^3+3x+2", p1.suma(p2).toString());
+        assertEquals(3, p1.suma(p2).grado());
     }
 
     @Test
@@ -313,6 +326,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("2x^5+8x^4+6x^3+3x^2+7x+6", p1.suma(p2).toString());
+        assertEquals(5, p1.suma(p2).grado());
     }
 
     @Test
@@ -322,6 +336,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("2x^5+8x^4+6x^3+3x^2+5x+6", p1.suma(p2).toString());
+        assertEquals(5, p1.suma(p2).grado());
     }
 
     @Test
@@ -331,6 +346,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("2x^5+8x^4+9x^3+3x^2+7x+6", p1.suma(p2).toString());
+        assertEquals(5, p1.suma(p2).grado());
     }
 
     /***********************************************
@@ -343,6 +359,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("-1", p1.resta(p2).toString());
+        assertEquals(0, p1.resta(p2).grado());
     }
 
     @Test
@@ -352,6 +369,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("x-1", p1.resta(p2).toString());
+        assertEquals(1, p1.resta(p2).grado());
     }
 
     @Test
@@ -361,6 +379,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("3x^3+2x+1", p1.resta(p2).toString());
+        assertEquals(3, p1.resta(p2).grado());
     }
 
     @Test
@@ -370,6 +389,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("-x", p1.resta(p2).toString());
+        assertEquals(1, p1.resta(p2).grado());
     }
 
     @Test
@@ -379,6 +399,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("-2x-2", p1.resta(p2).toString());
+        assertEquals(1, p1.resta(p2).grado());
     }
 
     @Test
@@ -388,6 +409,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("3x^3+x", p1.resta(p2).toString());
+        assertEquals(3, p1.resta(p2).grado());
     }
 
     @Test
@@ -397,6 +419,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("-2x^5-8x^4-6x^3-3x^2-3x-4", p1.resta(p2).toString());
+        assertEquals(5, p1.resta(p2).grado());
     }
 
     @Test
@@ -406,6 +429,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("-2x^5-8x^4-6x^3-3x^2-5x-4", p1.resta(p2).toString());
+        assertEquals(5, p1.resta(p2).grado());
     }
 
     @Test
@@ -415,6 +439,7 @@ public class PolinomioTest {
         Polinomio p1 = new Polinomio(v1);
         Polinomio p2 = new Polinomio(v2);
         assertEquals("-2x^5-8x^4-3x^3-3x^2-3x-4", p1.resta(p2).toString());
+        assertEquals(5, p1.resta(p2).grado());
     }
 
 }

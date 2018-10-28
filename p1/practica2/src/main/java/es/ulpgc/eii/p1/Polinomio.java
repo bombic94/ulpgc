@@ -31,8 +31,10 @@ public class Polinomio {
         if (v.length == 0) {
             v = new int[]{0};
         }
-        this.v = v;
+        this.v = new int[v.length];
+        System.arraycopy(v, 0, this.v, 0, this.v.length);
         computeGrade();
+        shorterVector();
     }
 
     /**
@@ -115,10 +117,7 @@ public class Polinomio {
                 tmp[i] = this.v[i] + p.v[i];
             }
         }
-        this.v = tmp;
-        computeGrade();
-        shorterVector();
-        return this;
+        return new Polinomio(tmp);
     }
 
     /**
@@ -137,10 +136,7 @@ public class Polinomio {
                 tmp[i] = this.v[i] - p.v[i];
             }
         }
-        this.v = tmp;
-        computeGrade();
-        shorterVector();
-        return this;
+        return new Polinomio(tmp);
     }
 
     /**
