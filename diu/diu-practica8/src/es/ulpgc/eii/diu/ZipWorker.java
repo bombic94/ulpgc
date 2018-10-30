@@ -78,7 +78,7 @@ public class ZipWorker extends SwingWorker<Integer, String> {
             FileInputStream fi = new FileInputStream(filename);
             origin = new BufferedInputStream(fi, BUFFER_SIZE);
 
-            ZipEntry entry = new ZipEntry( filename );
+            ZipEntry entry = new ZipEntry( filename.substring(inputFile.getPath().length()+1));
             out.putNextEntry( entry );
             int count;
             while((count = origin.read(data, 0, BUFFER_SIZE)) != -1)
