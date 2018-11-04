@@ -52,6 +52,7 @@ public class Frame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Compression app");
+        setResizable(false);
 
         zipBtn.setText("Compress");
         zipBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -164,12 +165,12 @@ public class Frame extends javax.swing.JFrame {
                                         JOptionPane.INFORMATION_MESSAGE);
                             } catch (final CancellationException e) {
                                 JOptionPane.showMessageDialog(Frame.this,
-                                        "The search process was cancelled",
+                                        "The compression was cancelled",
                                         "Compression app",
                                         JOptionPane.WARNING_MESSAGE);
                             } catch (final HeadlessException | InterruptedException | ExecutionException e) {
                                 JOptionPane.showMessageDialog(Frame.this,
-                                        "The search process failed: " + e.getMessage(),
+                                        "The compression failed: " + e.getMessage(),
                                         "Compression app",
                                         JOptionPane.ERROR_MESSAGE);
                             }
