@@ -44,6 +44,7 @@ public class Frame extends javax.swing.JFrame {
         singleRadioBtn = new javax.swing.JRadioButton();
         singleIntRadioBtn = new javax.swing.JRadioButton();
         multiIntRadioBtn = new javax.swing.JRadioButton();
+        clearBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         connectMenuItem = new javax.swing.JMenuItem();
@@ -84,6 +85,13 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("File");
 
         connectMenuItem.setText("Connect");
@@ -114,9 +122,11 @@ public class Frame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(clearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,7 +148,9 @@ public class Frame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addBtn)
-                        .addGap(117, 117, 117))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clearBtn)
+                        .addGap(88, 88, 88))))
         );
 
         pack();
@@ -147,7 +159,9 @@ public class Frame extends javax.swing.JFrame {
     private void connectMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectMenuItemActionPerformed
         LoginDialog loginDlg = new LoginDialog(this);
         loginDlg.setVisible(true);
-        fillTableList();
+        if (loginDlg.isSuccess()) {
+            fillTableList();
+        }
     }//GEN-LAST:event_connectMenuItemActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
@@ -165,6 +179,10 @@ public class Frame extends javax.swing.JFrame {
     private void multiIntRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiIntRadioBtnActionPerformed
         changeSelectionMode(2);
     }//GEN-LAST:event_multiIntRadioBtnActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        clearColumnList();
+    }//GEN-LAST:event_clearBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,6 +222,7 @@ public class Frame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.ButtonGroup btnGroup;
+    private javax.swing.JButton clearBtn;
     private javax.swing.JList<String> columnList;
     private javax.swing.JMenuItem connectMenuItem;
     private javax.swing.JMenu jMenu1;
@@ -245,5 +264,11 @@ public class Frame extends javax.swing.JFrame {
     
     private void changeSelectionMode(int i) {
         tableList.setSelectionMode(i);
+        tableList.clearSelection();
+    }
+
+    private void clearColumnList() {
+        tableList.clearSelection();
+        columnList.setListData(new String[] {});
     }
 }

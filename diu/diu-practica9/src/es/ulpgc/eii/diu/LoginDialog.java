@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 public class LoginDialog extends javax.swing.JDialog {
 
     Frame parent;
+    
+    private boolean success;
     /**
      * Creates new form LoginDialog1
      */
@@ -112,6 +114,7 @@ public class LoginDialog extends javax.swing.JDialog {
                     "Hi " + getUsername() + "! You have successfully logged in.",
                     "Login",
                     JOptionPane.INFORMATION_MESSAGE);
+            success = true;
             dispose();
         } else {
             JOptionPane.showMessageDialog(LoginDialog.this,
@@ -121,6 +124,7 @@ public class LoginDialog extends javax.swing.JDialog {
             // reset username and password
             userField.setText("");
             passwordField.setText("");
+            success = false;
         }
     }//GEN-LAST:event_loginBtnActionPerformed
 
@@ -131,6 +135,10 @@ public class LoginDialog extends javax.swing.JDialog {
  
     public String getPassword() {
         return new String(passwordField.getPassword());
+    }
+    
+    public boolean isSuccess() {
+        return this.success;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
