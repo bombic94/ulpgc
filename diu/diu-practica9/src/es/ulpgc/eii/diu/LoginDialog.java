@@ -8,16 +8,22 @@ package es.ulpgc.eii.diu;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author David
+ * Dialog component showing two text fields for username and password
  */
 public class LoginDialog extends javax.swing.JDialog {
 
+    /**
+     * Parent frame
+     */
     Frame parent;
     
-    private boolean success;
     /**
-     * Creates new form LoginDialog1
+     * Was the connection successful
+     */
+    private boolean success;
+
+    /**
+     * Creates new form LoginDialog
      */
     public LoginDialog(Frame parent) {
         super(parent, "Login", true);
@@ -104,10 +110,20 @@ public class LoginDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Cancel button pressed, hide dialog
+     * @param evt Cancel button
+     */
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
+    /**
+     * Login button pressed, try to connect to database with given
+     * credentials. If successful, show success dialog. If not successful,
+     * clear credentials to try again.
+     * @param evt Login button
+     */
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         if (parent.dbc.connect(getUsername(), getPassword())) {
             JOptionPane.showMessageDialog(LoginDialog.this,
@@ -128,15 +144,26 @@ public class LoginDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_loginBtnActionPerformed
 
-    
+    /**
+     * Getter for username
+     * @return username
+     */
     public String getUsername() {
         return userField.getText().trim();
     }
  
+    /**
+     * Getter for password
+     * @return password 
+     */
     public String getPassword() {
         return new String(passwordField.getPassword());
     }
-    
+
+    /**
+     * Getter for success
+     * @return success
+     */
     public boolean isSuccess() {
         return this.success;
     }

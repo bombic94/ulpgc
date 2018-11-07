@@ -10,12 +10,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author David
- */
 public class Frame extends javax.swing.JFrame {
 
+    /**
+     * Instance of DBConnector
+     */
     DBConnector dbc;
 
     /**
@@ -50,6 +49,7 @@ public class Frame extends javax.swing.JFrame {
         connectMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("DB Explorer");
 
         tableList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tableList);
@@ -156,6 +156,11 @@ public class Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Connect to database. Show login dialog and if connection is successful,
+     * fill the table list with names of table
+     * @param evt Connect menu item clicked
+     */
     private void connectMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectMenuItemActionPerformed
         LoginDialog loginDlg = new LoginDialog(this);
         loginDlg.setVisible(true);
@@ -164,25 +169,100 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_connectMenuItemActionPerformed
 
+    /**
+     * Fill column list with columns of selected tables of table list
+     * @param evt button clicked
+     */
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         fillColumnList();
     }//GEN-LAST:event_addBtnActionPerformed
 
+    /**
+     * Change selection model to Single
+     * @param evt radio button
+     */
     private void singleRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleRadioBtnActionPerformed
         changeSelectionMode(0);
     }//GEN-LAST:event_singleRadioBtnActionPerformed
 
+    /**
+     * Change selection model to Single Interval
+     * @param evt radio button
+     */
     private void singleIntRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleIntRadioBtnActionPerformed
         changeSelectionMode(1);
     }//GEN-LAST:event_singleIntRadioBtnActionPerformed
 
+    /**
+     * Change selection model to Multiple Interval
+     * @param evt radio button
+     */
     private void multiIntRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiIntRadioBtnActionPerformed
         changeSelectionMode(2);
     }//GEN-LAST:event_multiIntRadioBtnActionPerformed
 
+    /**
+     * Clear the column list completely
+     * @param evt button clicked
+     */
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         clearColumnList();
     }//GEN-LAST:event_clearBtnActionPerformed
+
+    /**
+     * Method called after start of program. Creates new instance of DBConnector
+     * and adds radio buttons to one group, default selected is Single
+     */
+    private void init() {
+        dbc = new DBConnector();
+        btnGroup.add(singleRadioBtn);
+        btnGroup.add(singleIntRadioBtn);
+        btnGroup.add(multiIntRadioBtn);
+        singleRadioBtn.setSelected(true);
+    }
+
+    /**
+     * Fills table list with values obtained from dbc result.
+     */
+    private void fillTableList() {
+        Set<String> keys = dbc.getResult().keySet();
+        String[] listData = keys.toArray(new String[keys.size()]);
+        tableList.setListData(listData);
+    }
+
+    /**
+     * Fills column list with values obtained from dbc result filtered
+     * by selected tables.
+     */
+    private void fillColumnList() {
+        List<String> selectedValuesList = tableList.getSelectedValuesList();
+        List<String> result = new ArrayList<>();
+        for (String table : selectedValuesList) {
+            result.addAll(dbc.getResult().get(table)
+                    .stream()
+                    .map(e -> table.concat(".").concat(e))
+                    .collect(Collectors.toList()));    
+        }
+        String[] listData = result.toArray(new String[result.size()]);
+        columnList.setListData(listData);
+    }
+
+    /**
+     * Change selection model based on chosen radio button.
+     * @param i integer representation of selection model
+     */
+    private void changeSelectionMode(int i) {
+        tableList.setSelectionMode(i);
+        tableList.clearSelection();
+    }
+
+    /**
+     * Clear all items from column list.
+     */
+    private void clearColumnList() {
+        tableList.clearSelection();
+        columnList.setListData(new String[] {});
+    }
 
     /**
      * @param args the command line arguments
@@ -234,41 +314,4 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JRadioButton singleRadioBtn;
     private javax.swing.JList<String> tableList;
     // End of variables declaration//GEN-END:variables
-
-    private void init() {
-        dbc = new DBConnector();
-        btnGroup.add(singleRadioBtn);
-        btnGroup.add(singleIntRadioBtn);
-        btnGroup.add(multiIntRadioBtn);
-        singleRadioBtn.setSelected(true);
-    }
-
-    private void fillTableList() {
-        Set<String> keys = dbc.getResult().keySet();
-        String[] listData = keys.toArray(new String[keys.size()]);
-        tableList.setListData(listData);
-    }
-
-    private void fillColumnList() {
-        List<String> selectedValuesList = tableList.getSelectedValuesList();
-        List<String> result = new ArrayList<>();
-        for (String table : selectedValuesList) {
-            result.addAll(dbc.getResult().get(table)
-                    .stream()
-                    .map(e -> table.concat(".").concat(e))
-                    .collect(Collectors.toList()));    
-        }
-        String[] listData = result.toArray(new String[result.size()]);
-        columnList.setListData(listData);
-    }
-    
-    private void changeSelectionMode(int i) {
-        tableList.setSelectionMode(i);
-        tableList.clearSelection();
-    }
-
-    private void clearColumnList() {
-        tableList.clearSelection();
-        columnList.setListData(new String[] {});
-    }
 }

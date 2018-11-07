@@ -13,18 +13,30 @@ import java.util.TreeMap;
 import java.util.logging.*;
 
 /**
- *
- * @author David
+ * Object that manages connection to database
  */
 public class DBConnector {
     
+    /**
+     * Settings for connection to database
+     */
     private final String service = "localhost";//"mozart.dis.ulpgc.es";
     private final String database = "DIU_2018_19";
     //private String user = "estudiante-DIU";
     //private String password = "DIU1819-aed56-noi";
     
+    /**
+     * Map containing tables and columns strings
+     */
     private Map<String, List<String>> result = new TreeMap<>();
     
+    /**
+     * Method that makes connection to database and extracts names of
+     * tables and columns
+     * @param user User login
+     * @param password User password
+     * @return true, if method ran correctly, false otherwise (exception thrown)
+     */
     public boolean connect(String user, String password) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -52,6 +64,10 @@ public class DBConnector {
         }
     }
     
+    /**
+     * Getter for map containing names of tables and columns.
+     * @return result
+     */
     public Map<String, List<String>> getResult() {
         return this.result;
     }
