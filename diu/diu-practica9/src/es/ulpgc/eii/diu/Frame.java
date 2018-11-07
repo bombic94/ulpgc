@@ -92,7 +92,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        jMenu1.setText("Options");
 
         connectMenuItem.setText("Connect");
         connectMenuItem.addActionListener(new java.awt.event.ActionListener() {
