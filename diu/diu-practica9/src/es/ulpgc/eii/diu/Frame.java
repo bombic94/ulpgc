@@ -47,6 +47,8 @@ public class Frame extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         connectMenuItem = new javax.swing.JMenuItem();
+        separator = new javax.swing.JPopupMenu.Separator();
+        closeMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DB Explorer");
@@ -58,13 +60,16 @@ public class Frame extends javax.swing.JFrame {
         jScrollPane2.setViewportView(columnList);
 
         addBtn.setText("Show");
+        addBtn.setEnabled(false);
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
             }
         });
 
+        singleRadioBtn.setSelected(true);
         singleRadioBtn.setText("Single");
+        singleRadioBtn.setEnabled(false);
         singleRadioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 singleRadioBtnActionPerformed(evt);
@@ -72,6 +77,7 @@ public class Frame extends javax.swing.JFrame {
         });
 
         singleIntRadioBtn.setText("Single Interval");
+        singleIntRadioBtn.setEnabled(false);
         singleIntRadioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 singleIntRadioBtnActionPerformed(evt);
@@ -79,6 +85,7 @@ public class Frame extends javax.swing.JFrame {
         });
 
         multiIntRadioBtn.setText("Multiple Interval");
+        multiIntRadioBtn.setEnabled(false);
         multiIntRadioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 multiIntRadioBtnActionPerformed(evt);
@@ -86,6 +93,7 @@ public class Frame extends javax.swing.JFrame {
         });
 
         clearBtn.setText("Clear");
+        clearBtn.setEnabled(false);
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearBtnActionPerformed(evt);
@@ -94,6 +102,7 @@ public class Frame extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
+        connectMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         connectMenuItem.setText("Connect");
         connectMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +110,16 @@ public class Frame extends javax.swing.JFrame {
             }
         });
         jMenu1.add(connectMenuItem);
+        jMenu1.add(separator);
+
+        closeMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        closeMenuItem.setText("Close");
+        closeMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(closeMenuItem);
 
         jMenuBar1.add(jMenu1);
 
@@ -166,6 +185,11 @@ public class Frame extends javax.swing.JFrame {
         loginDlg.setVisible(true);
         if (loginDlg.isSuccess()) {
             fillTableList();
+            singleRadioBtn.setEnabled(true);
+            singleIntRadioBtn.setEnabled(true);
+            multiIntRadioBtn.setEnabled(true);
+            addBtn.setEnabled(true);
+            clearBtn.setEnabled(true);
         }
     }//GEN-LAST:event_connectMenuItemActionPerformed
 
@@ -208,6 +232,10 @@ public class Frame extends javax.swing.JFrame {
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         clearColumnList();
     }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void closeMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeMenuItemActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_closeMenuItemActionPerformed
 
     /**
      * Method called after start of program. Creates new instance of DBConnector
@@ -303,6 +331,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.ButtonGroup btnGroup;
     private javax.swing.JButton clearBtn;
+    private javax.swing.JMenuItem closeMenuItem;
     private javax.swing.JList<String> columnList;
     private javax.swing.JMenuItem connectMenuItem;
     private javax.swing.JMenu jMenu1;
@@ -310,6 +339,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton multiIntRadioBtn;
+    private javax.swing.JPopupMenu.Separator separator;
     private javax.swing.JRadioButton singleIntRadioBtn;
     private javax.swing.JRadioButton singleRadioBtn;
     private javax.swing.JList<String> tableList;
