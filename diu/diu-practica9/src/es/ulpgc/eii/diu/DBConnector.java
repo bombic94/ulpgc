@@ -20,7 +20,7 @@ public class DBConnector {
     /**
      * Settings for connection to database
      */
-    private final String service = "localhost";//"mozart.dis.ulpgc.es";
+    private final String service = "mozart.dis.ulpgc.es";
     private final String database = "DIU_2018_19";
     //private String user = "estudiante-DIU";
     //private String password = "DIU1819-aed56-noi";
