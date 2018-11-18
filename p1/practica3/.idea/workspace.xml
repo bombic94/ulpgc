@@ -22,7 +22,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Contact.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Contact.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Contact.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
@@ -40,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Group.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Group.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Group.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1547">
-              <caret line="93" column="89" selection-end-line="106" />
+            <state relative-caret-position="814">
+              <caret line="106" column="1" lean-forward="true" selection-start-line="2" selection-end-line="106" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -52,8 +52,8 @@
       <file leaf-file-name="UseMessenger.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UseMessenger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="20" selection-end-line="32" />
+            <state relative-caret-position="387">
+              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -61,14 +61,14 @@
       <file leaf-file-name="MessengerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/MessengerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3315">
-              <caret line="208" column="31" selection-end-line="238" />
+            <state relative-caret-position="540">
+              <caret line="379" column="1" selection-start-line="379" selection-start-column="1" selection-end-line="379" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#648#649#0" expanded="true" />
                 <element signature="e#711#712#0" expanded="true" />
                 <element signature="e#770#771#0" expanded="true" />
-                <element signature="e#823#824#0" expanded="true" />
+                <element signature="e#825#826#0" expanded="true" />
                 <element signature="e#882#883#0" expanded="true" />
                 <element signature="e#933#934#0" expanded="true" />
                 <element signature="e#991#992#0" expanded="true" />
@@ -103,12 +103,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/SMSTools.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/MessengerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UseMessenger.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/MessengerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Contact.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Person.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UseMessenger.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Group.java" />
+        <option value="$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/MessengerTest.java" />
       </list>
     </option>
   </component>
@@ -129,18 +129,18 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="width" value="1004" />
-    <option name="height" value="745" />
+    <option name="x" value="744" />
+    <option name="width" value="1183" />
+    <option name="height" value="1087" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -257,6 +257,29 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="MessengerTest.testStupidAulagaToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="es.ulpgc.eii.p1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="es.ulpgc.eii.p1" />
+      <option name="MAIN_CLASS_NAME" value="es.ulpgc.eii.p1.MessengerTest" />
+      <option name="METHOD_NAME" value="testStupidAulagaToString" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -298,10 +321,12 @@
     <list>
       <item itemvalue="Application.UseMessenger" />
       <item itemvalue="JUnit.MessengerTest" />
+      <item itemvalue="JUnit.MessengerTest.testStupidAulagaToString" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MessengerTest" />
+        <item itemvalue="JUnit.MessengerTest.testStupidAulagaToString" />
         <item itemvalue="Application.UseMessenger" />
       </list>
     </recent_temporary>
@@ -318,43 +343,45 @@
       <updated>1540977932520</updated>
       <workItem from="1540977937758" duration="8692000" />
       <workItem from="1541408519115" duration="45000" />
+      <workItem from="1542532746554" duration="671000" />
+      <workItem from="1542546201706" duration="2569000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MessengerTest - 2018.10.31 at 11h 43m 02s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 29m 42s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 11h 43m 27s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 29m 58s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 11h 44m 21s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 30m 10s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 11h 44m 34s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 30m 36s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 11h 45m 29s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 31m 29s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 11h 46m 01s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 32m 21s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 11h 53m 16s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 32m 53s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 11h 55m 30s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 33m 07s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 12h 01m 02s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 33m 45s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MessengerTest - 2018.10.31 at 12h 01m 19s.xml">
+    <history-entry file="MessengerTest - 2018.11.18 at 13h 34m 20s.xml">
       <configuration name="MessengerTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8737000" />
+    <option name="totallyTimeSpent" value="11977000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -362,6 +389,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32925585" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
@@ -369,11 +397,11 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.32925585" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.3312946" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.14010416" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -387,7 +415,6 @@
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32925585" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32925585" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,6 +424,130 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Contact.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" column="7" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="102" column="25" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/MessengerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2992">
+          <caret line="176" column="28" lean-forward="true" selection-start-line="176" selection-start-column="28" selection-end-line="176" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#991#992#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1173#1174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/SMSTools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UseMessenger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" column="7" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="93" column="89" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UseMessenger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="20" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/MessengerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3315">
+          <caret line="208" column="31" selection-end-line="238" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#991#992#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1173#1174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/SMSTools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Contact.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
@@ -434,7 +585,7 @@
             <element signature="e#648#649#0" expanded="true" />
             <element signature="e#711#712#0" expanded="true" />
             <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
             <element signature="e#882#883#0" expanded="true" />
             <element signature="e#933#934#0" expanded="true" />
             <element signature="e#991#992#0" expanded="true" />
@@ -475,23 +626,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UseMessenger.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Contact.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="20" selection-end-line="32" />
+          <caret line="16" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" column="7" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/UseMessenger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/es/ulpgc/eii/p1/MessengerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="208" column="31" selection-end-line="238" />
+        <state relative-caret-position="540">
+          <caret line="379" column="1" selection-start-line="379" selection-start-column="1" selection-end-line="379" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#648#649#0" expanded="true" />
             <element signature="e#711#712#0" expanded="true" />
             <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
             <element signature="e#882#883#0" expanded="true" />
             <element signature="e#933#934#0" expanded="true" />
             <element signature="e#991#992#0" expanded="true" />
@@ -504,22 +669,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Group.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="93" column="89" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="31" column="7" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/ulpgc/eii/p1/Contact.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-end-line="48" />
+        <state relative-caret-position="814">
+          <caret line="106" column="1" lean-forward="true" selection-start-line="2" selection-end-line="106" selection-end-column="1" />
         </state>
       </provider>
     </entry>

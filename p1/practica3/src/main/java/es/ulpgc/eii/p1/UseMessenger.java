@@ -3,7 +3,7 @@ package es.ulpgc.eii.p1;
 public class UseMessenger {
 
     public static void main(String[] args) {
-        org.junit.runner.JUnitCore.main("es.ulpgc.eii.p1.MessengerTest");
+        //org.junit.runner.JUnitCore.main("es.ulpgc.eii.p1.MessengerTest");
         Person pepe = new Person("Pepe","5555380");
         Person juan = new Person("Juan","55541501");
         Person antonio = new Person("Antonio","5556380");

@@ -40,6 +40,7 @@ public class Group extends Contact {
      * @return True if contact is member of the group
      */
     public boolean isMember(int id) {
+        if (this.getId() == id) return true;
         for (Contact contact : contacts) {
             if (contact.getId() == id) return true;
             if (contact instanceof Group) {
@@ -97,9 +98,9 @@ public class Group extends Contact {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.getName());
+        sb.append(this.getName()).append("\n");
         for (Contact contact : contacts) {
-            sb.append("\n").append(contact.toString());
+            sb.append(contact.toString()).append("\n");
         }
         return sb.toString();
     }
